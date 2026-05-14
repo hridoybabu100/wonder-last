@@ -10,18 +10,18 @@ const Navbar = () => {
 
   const links = (
     <>
-      <Link href={"/"} className={`${path === '/' ? "border border-white p-1" : ""}`}>
+      <Link href={"/"} className={`${path === '/' ? "border border-b-black p-1" : ""}`}>
         <li>Home</li>
       </Link>
-      <Link href={"/destination"} className={`${path === '/destination' ? "border border-white p-1" : ""}`}>
+      <Link href={"/destination"} className={`${path === '/destination' ? "border border-b-black p-1" : ""}`}>
         {" "}
         <li>Destinations</li>
       </Link>
-      <Link href={"/book"} className={`${path === '/book' ? "border border-white p-1" : ""}`}>
+      <Link href={"/book"} className={`${path === '/book' ? "border border-b-black p-1" : ""}`}>
         {" "}
         <li>My Bookings</li>
       </Link>
-      <Link href={"/admin"} className={`${path === '/admin' ? "border border-white p-1" : ""}`}>
+      <Link href={"/admin"} className={`${path === '/admin' ? "border border-b-black p-1" : ""}`}>
         <li>Admin</li>
       </Link>
     </>
@@ -43,15 +43,15 @@ const Navbar = () => {
           </aside>
         </div>
         <div className="flex gap-2 items-center">
-          <Link href={"/profile"} className={`${path === '/profile' ? "border border-white p-1" : ""}`}>
+          <Link href={"/profile"} className={`${path === '/profile' ? "border border-b-black p-1" : ""}`}>
             {" "}
             <button className="btn">Profile</button>
           </Link>
-          <Link href={"/login"} className={`${path === 'login' ? "border border-white p-1" : ""}`}>
+          <Link href={"/login"} className={`${path === 'login' ? "border border-b-black p-1" : ""}`}>
             {" "}
             <button className="btn">Login</button>
           </Link>
-          <Link href={"/register"} className={`${path === '/register' ? "border border-white p-1" : ""}`}>
+          <Link href={"/register"} className={`${path === '/register' ? "border border-b-black p-1" : ""}`}>
             {" "}
             <button className="btn">SingUp</button>
           </Link>
