@@ -3,13 +3,29 @@ import { Button, FieldError, Input, Label, ListBox, TextArea, TextField, Select}
 
 const Registerpage = () => {
 
-    const onSubMit = (e) => {
+    const onSubMit = async(e) => {
         e.preventDefault();
         // console.log('e ', e);
 
         const formData = new FormData(e.currentTarget);
         const newData = Object.fromEntries(formData.entries());
         // console.log('new data', newData);
+
+        const res = await fetch("http://localhost:5000/admin", {
+            method : "POST",
+            headers : {
+                "Content-Type" : "application/json"
+            },
+
+            body : JSON.stringify(newData)
+        })
+
+        const browsedata = await res.json();
+        // console.log('Browsedata', browsedata);
+
+        // const {data, error} = 
+        
+        
         
         
     }
