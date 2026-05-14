@@ -1,30 +1,42 @@
+import { EditCard } from "@/components/Editcard/EditCard";
+import { Button } from "@heroui/react";
 import Image from "next/image";
 import Link from "next/link";
 
 const DestinationDetailsPage = async ({params}) => {
     const {id} = await params;
 
-  const res = await fetch("http://localhost:5000/destination");
-  const destination = await res.json();
+  const res = await fetch(`http://localhost:5000/destination/${id}`);
+  const data = await res.json();
 
 
 
-  const data = destination.find((i) => i._id == id);
+//   const data = destination.find((i) => i._id == id);
 
-  console.log('data', data);
+//   console.log('data', data);
 
   
   
   return (
     <div className="w-[60%] mx-auto my-10">
-      <div className="rounded-3xl overflow-hidden bg-white shadow-xl hover:shadow-2xl transition-all duration-500 group border border-gray-100">
+        <div className="flex gap-1 items-center justify-between my-4">
+            <div>
+
+            </div>
+            <div className="flex gap-1">
+           <EditCard data={data}></EditCard>
+            <Button variant="danger">Delete</Button>
+
+            </div>
+        </div>
+      <div className="rounded-xl overflow-hidden bg-white shadow-xl hover:shadow-2xl transition-all duration-500 group border border-gray-100">
         {/* Image */}
         <div className="relative overflow-hidden">
           <Image
             src={data.imageUrl}
             width={300}
             height={300}
-            alt="Travel"
+            alt={data.name}
             className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-700"
           />
 

@@ -1,7 +1,9 @@
 'use client'
 import { Button, FieldError, Input, Label, ListBox, TextArea, TextField, Select} from "@heroui/react";
+import { redirect, useRouter } from "next/navigation";
 
 const Registerpage = () => {
+    const router = useRouter()
 
     const onSubMit = async(e) => {
         e.preventDefault();
@@ -24,7 +26,10 @@ const Registerpage = () => {
         // console.log('Browsedata', browsedata);
 
         // const {data, error} = 
-        
+        if(browsedata){
+            alert("Data Added sueccssful");
+            redirect('/destination')
+        }
         
         
         
