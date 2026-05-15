@@ -49,7 +49,7 @@ const DestinationCard = ({data}) => {
           </div>
 
           {/* Description */}
-          <p className="text-gray-600 leading-relaxed">hudai</p>
+          <p className="text-gray-600 leading-relaxed">{data.description}</p>
 
           {/* Button */}
           <Link href={`/destination/${data._id}`}>
