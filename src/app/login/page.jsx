@@ -111,7 +111,7 @@ const googleHandle =  async()=> {
       <small className="">OR</small>
       </div>
       <div>
-         <Button onClick={googleHandle} className="w-full" variant="tertiary">
+         <Button onClick={googleHandle} className="w-full rounded-xl" variant="tertiary">
         <Icon icon="devicon:google" />
         Sign in with Google
       </Button>
