@@ -10,7 +10,7 @@ const Navbar = () => {
   const { data: session } = authClient.useSession();
   //  console.log(session, 'session');
   const user = session?.user;
-  // console.log('User', user);
+  console.log('User', user);
 
   //     await authClient.signOut({
   //   fetchOptions: {
