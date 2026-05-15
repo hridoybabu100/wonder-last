@@ -53,7 +53,7 @@ export function DeleteCard({ data }) {
             </AlertDialog.Body>
             <AlertDialog.Footer className="flex-col-reverse">
               <Button className="w-full" slot="close">
-                Keep Account
+                Go Back
               </Button>
               <Button
                 onClick={handleDelete}
