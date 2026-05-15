@@ -1,11 +1,10 @@
 import { DeleteCard } from "@/components/DeleteCard/DeleteCard";
 import { EditCard } from "@/components/Editcard/EditCard";
-import { Button } from "@heroui/react";
 import Image from "next/image";
 import Link from "next/link";
 
 const DestinationDetailsPage = async ({params}) => {
-    const {id} = await params;
+  const {id} = await params;
 
   const res = await fetch(`http://localhost:5000/destination/${id}`);
   const data = await res.json();

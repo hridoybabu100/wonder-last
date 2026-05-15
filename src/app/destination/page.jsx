@@ -7,7 +7,7 @@ const Destinations = async() => {
     const res = await fetch("http://localhost:5000/destination");
     const destination = await res.json();
 
-    console.log('destination', destination);
+    // console.log('destination', destination);
     
     return (
         <div className="max-w-[80%] mx-auto">
