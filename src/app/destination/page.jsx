@@ -10,7 +10,7 @@ const Destinations = async() => {
     console.log('destination', destination);
     
     return (
-        <div>
+        <div className="max-w-[80%] mx-auto">
            <h1>all Destinations </h1>
 
            <div className="grid grid-cols-4 gap-5">

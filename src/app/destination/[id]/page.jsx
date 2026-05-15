@@ -1,3 +1,4 @@
+import { DeleteCard } from "@/components/DeleteCard/DeleteCard";
 import { EditCard } from "@/components/Editcard/EditCard";
 import { Button } from "@heroui/react";
 import Image from "next/image";
@@ -25,7 +26,8 @@ const DestinationDetailsPage = async ({params}) => {
             </div>
             <div className="flex gap-1">
            <EditCard data={data}></EditCard>
-            <Button variant="danger">Delete</Button>
+           <DeleteCard data={data}></DeleteCard>
+          
 
             </div>
         </div>

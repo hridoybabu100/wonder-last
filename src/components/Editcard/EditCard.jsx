@@ -13,49 +13,52 @@ import {
   TextField,
   Select,
 } from "@heroui/react";
+import { redirect } from "next/navigation";
+import { toast } from "react-toastify";
 
 export function EditCard({data}) {
 
+  const {_id} = data;
+  // console.log('all data', data);
+  
+  const onSubMit = async (e) => {
+    e.preventDefault();
+    // console.log('e ', e);
 
-     const onSubMit = async(e) => {
-            e.preventDefault();
-            // console.log('e ', e);
-    
-            const formData = new FormData(e.currentTarget);
-            const newData = Object.fromEntries(formData.entries());
-            console.log('new data', newData);
-    
-            const res = await fetch(`http://localhost:5000/admin${_id}`, {
-                method : "PATCH",
-                headers : {
-                    "Content-Type" : "application/json"
-                },
-    
-                body : JSON.stringify(newData)
-            })
-    
-            const browsedata = await res.json();
-            console.log('Browsedata', browsedata);
-    
-            // const {data, error} = 
-           
-            
-            
-            
-        }
+    const formData = new FormData(e.currentTarget);
+    const newData = Object.fromEntries(formData.entries());
+    // console.log("new data", newData);
+
+    const res = await fetch(`http://localhost:5000/destination/${_id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+
+      body: JSON.stringify(newData),
+    });
+
+    const editData = await res.json();
+    // console.log('Browsedata', browsedata);
+
+    // const {data, error} =
+    if (editData) {
+      toast.success("Editing sueccssful to check destination page.");
+      redirect("/destination");
+    }
+  };
   return (
     <Modal>
-      <Button variant="outline">Edit</Button>
+      <Button variant="secondary">Edit</Button>
       <Modal.Backdrop>
         <Modal.Container placement="auto">
-          <Modal.Dialog className="">
+          <Modal.Dialog className="sm:max-w-md">
             <Modal.CloseTrigger />
             <Modal.Header>
               <Modal.Icon className="bg-accent-soft text-accent-soft-foreground">
                 <Envelope className="size-5" />
               </Modal.Icon>
-              <Modal.Heading>Editing</Modal.Heading>
-             
+              <Modal.Heading>Contact Us</Modal.Heading>
             </Modal.Header>
             <Modal.Body className="p-6">
               <Surface variant="default">
@@ -69,12 +72,11 @@ export function EditCard({data}) {
                           placeholder="Bali Paradise"
                           className="rounded-2xl"
                         />
-                        <FieldError />
                       </TextField>
                     </div>
 
                     {/* Country */}
-                    <TextField name="country" isRequired>
+                    <TextField defaultValue={data.country} name="country" isRequired>
                       <Label>Country</Label>
                       <Input placeholder="Indonesia" className="rounded-2xl" />
                       <FieldError />
@@ -82,7 +84,7 @@ export function EditCard({data}) {
 
                     {/* Category - Updated Select Component */}
                     <div>
-                      <Select
+                      <Select defaultValue={data.category}
                         name="category"
                         isRequired
                         className="w-full"
@@ -125,7 +127,7 @@ export function EditCard({data}) {
                     </div>
 
                     {/* Price */}
-                    <TextField name="price" type="number" isRequired>
+                    <TextField defaultValue={data.price} name="price" type="number" isRequired>
                       <Label>Price (USD)</Label>
                       <Input
                         type="number"
@@ -136,7 +138,7 @@ export function EditCard({data}) {
                     </TextField>
 
                     {/* Duration */}
-                    <TextField name="duration" isRequired>
+                    <TextField defaultValue={data.duration} name="duration" isRequired>
                       <Label>Duration</Label>
                       <Input
                         placeholder="7 Days / 6 Nights"
@@ -147,7 +149,7 @@ export function EditCard({data}) {
 
                     {/* Departure Date */}
                     <div className="md:col-span-2">
-                      <TextField name="departureDate" type="date" isRequired>
+                      <TextField defaultValue={data.departureDate} name="departureDate" type="date" isRequired>
                         <Label>Departure Date</Label>
                         <Input type="date" className="rounded-2xl" />
                         <FieldError />
@@ -156,7 +158,7 @@ export function EditCard({data}) {
 
                     {/* Image URL - Removed preview */}
                     <div className="md:col-span-2">
-                      <TextField name="imageUrl" isRequired>
+                      <TextField defaultValue={data.imageUrl} name="imageUrl" isRequired>
                         <Label>Image URL</Label>
                         <Input
                           type="url"
@@ -169,7 +171,7 @@ export function EditCard({data}) {
 
                     {/* Description */}
                     <div className="md:col-span-2">
-                      <TextField name="description" isRequired>
+                      <TextField defaultValue={data.description} name="description" isRequired>
                         <Label>Description</Label>
                         <TextArea
                           placeholder="Describe the travel experience..."
@@ -183,9 +185,6 @@ export function EditCard({data}) {
                   {/* Buttons */}
 
                   <Modal.Footer>
-                    <Button slot="close" variant="secondary">
-                      Cancel
-                    </Button>
                     <Button type="submit" slot="close">
                       Save
                     </Button>
